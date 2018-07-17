@@ -1,8 +1,3 @@
-# flutter_udemy_course
+# Flutter Udemy Course
 
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+An App for the [Flutter Udemy Course](https://www.udemy.com/learn-flutter-dart-to-build-ios-android-apps).
