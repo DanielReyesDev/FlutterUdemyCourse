@@ -52,7 +52,7 @@ class _ProductManagerState extends State<ProductManager> {
               margin: EdgeInsets.all(16.0),
               child: ProductControl(_addProduct), //Passing a reference to the function
             ),
-            Products(this._products),
+            Expanded(child: Products(this._products),)
         ],
       );
     }
