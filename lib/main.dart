@@ -8,12 +8,17 @@ class MyApp extends StatelessWidget {
     Widget build(BuildContext context) {
       // TODO: implement build
       return MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text("Easylist"),
-            ),
-            body: ProductManager("Food tester"),
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.deepOrange,
+          accentColor: Colors.deepPurple
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text("Easylist"),
           ),
-        );
+          body: ProductManager(startingProduct: "Food tester",),
+        ),
+      );
     }
 }

@@ -5,11 +5,13 @@ class Products extends StatelessWidget {
 
   final List<String> products; //Because of is a StateLessWidget
 
-  Products(this.products);
+  Products([this.products = const []]) {
+    print("[Products] constructor");
+  }
 
   @override
     Widget build(BuildContext context) {
-      // TODO: implement build
+      print("[Products] build");
       print("🛑 products:");
       print(products);
 
