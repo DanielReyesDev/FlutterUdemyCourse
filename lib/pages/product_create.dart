@@ -16,9 +16,10 @@ class ProductCreatePage extends StatefulWidget {
 
 class ProductCreatePageState extends State<ProductCreatePage> {
 
-  String titleValue = "";
-  String descriptionValue = "";
-  double priceValue = 0.0;
+  String _titleValue = "";
+  String _descriptionValue = "";
+  double _priceValue = 0.0;
+  bool _acceptTerms = false;
 
 
 
@@ -35,7 +36,7 @@ class ProductCreatePageState extends State<ProductCreatePage> {
               ),
               onChanged: (String value) {
                 setState(() {
-                  titleValue = value;
+                  _titleValue = value;
                 });
               },
             ),
@@ -46,7 +47,7 @@ class ProductCreatePageState extends State<ProductCreatePage> {
               maxLines: 4,
               onChanged: (String value) {
                 setState(() {
-                  descriptionValue = value;
+                  _descriptionValue = value;
                 });
               },
             ),
@@ -57,21 +58,35 @@ class ProductCreatePageState extends State<ProductCreatePage> {
               keyboardType: TextInputType.number,
               onChanged: (String value) {
                 setState(() {
-                  priceValue = double.parse(value);
+                  _priceValue = double.parse(value);
                 });
               },
             ),
+            SwitchListTile(
+              title: Text("Accept Terms"),
+              value: this._acceptTerms,
+              onChanged: (bool value){
+                setState(() {
+                  _acceptTerms = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
             RaisedButton(
               child: Text("Save"),
+              color: Theme.of(context).accentColor,
+              textColor: Colors.white,
               onPressed: (){
                 final Map<String, dynamic> product = {
-                  'title' : titleValue,
-                  'description': descriptionValue,
-                  'price': priceValue,
+                  'title' : _titleValue,
+                  'description': _descriptionValue,
+                  'price': _priceValue,
                   'image': 'assets/food.jpg'
                 };
-
                 widget.addProduct(product);
+                Navigator.pushReplacementNamed(context, "/");
               },
             )
           ],
