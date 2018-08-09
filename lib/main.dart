@@ -22,10 +22,10 @@ class MyApp extends StatefulWidget {
 }
 class MyAppState extends State<MyApp> {
 
-  List<Map<String,String>> _products = [];
+  List<Map<String,dynamic>> _products = [];
 
   // For mixing types, use: dynamic
-  void _addProduct(Map<String,String> product) {
+  void _addProduct(Map<String,dynamic> product) {
     setState(() {
       _products.add(product); //we're not asign it a new list, just mutating the List, that's why 'final' works
     });
@@ -49,8 +49,8 @@ class MyAppState extends State<MyApp> {
         ),
         // home: AuthPage(),
         routes: {
-          '/': (BuildContext context) => ProductsPage(_products, _addProduct, _deleteProduct), //if you add this route, you won't need the home: attribute for MaterialApp
-          '/admin': (BuildContext context) => ProductsAdminPage(),
+          '/': (BuildContext context) => ProductsPage(_products), //if you add this route, you won't need the home: attribute for MaterialApp
+          '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct),
         },
         onGenerateRoute: (RouteSettings settings){
           final List<String> pathElements = settings.name.split('/');
@@ -69,7 +69,7 @@ class MyAppState extends State<MyApp> {
         onUnknownRoute: (RouteSettings settings){
           return MaterialPageRoute(
             builder: (BuildContext context) =>
-              ProductsPage(_products, _addProduct, _deleteProduct)
+              ProductsPage(_products)
           );
         },
       );
