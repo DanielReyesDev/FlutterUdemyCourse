@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart'; // Required only for debbuging
+import 'package:flutter/rendering.dart'; // Required only for debbuging
 import './product_manager.dart';
 import './pages/auth.dart';
 import './pages/products_admin.dart';
@@ -49,7 +49,8 @@ class MyAppState extends State<MyApp> {
         ),
         // home: AuthPage(),
         routes: {
-          '/': (BuildContext context) => ProductsPage(_products), //if you add this route, you won't need the home: attribute for MaterialApp
+          '/': (BuildContext context) => AuthPage(),
+          '/products': (BuildContext context) => ProductsPage(_products), //if you add this route, you won't need the home: attribute for MaterialApp
           '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct),
         },
         onGenerateRoute: (RouteSettings settings){
